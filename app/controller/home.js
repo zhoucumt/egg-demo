@@ -16,6 +16,16 @@ class HomeController extends Controller {
     const { id } = ctx.params; // 通过 params 获取申明参数
     ctx.body = id;
   }
+
+  // post 请求方法
+  async add() {
+    const { ctx } = this;
+    const { title } = ctx.request.body;
+    // Egg 框架内置了 bodyParser 中间件来对 POST 请求 body 解析成 object 挂载到 ctx.request.body 上
+    ctx.body = {
+      title,
+    };
+  }
 }
 
 module.exports = HomeController;
