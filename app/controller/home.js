@@ -9,6 +9,13 @@ class HomeController extends Controller {
     ctx.body = id;
     // ctx.body = 'hi, egg';
   }
+
+  // 获取用户信息
+  async user() {
+    const { ctx } = this;
+    const { id } = ctx.params; // 通过 params 获取申明参数
+    ctx.body = id;
+  }
 }
 
 module.exports = HomeController;
