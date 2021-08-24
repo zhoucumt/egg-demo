@@ -5,9 +5,14 @@ const Controller = require('egg').Controller;
 class HomeController extends Controller {
   async index() {
     const { ctx } = this;
-    const { id } = ctx.query;
-    ctx.body = id;
+    // const { id } = ctx.query;
+    // ctx.body = id;
     // ctx.body = 'hi, egg';
+
+    // ctx.render 默认会去 view 文件夹寻找 index.html，这是 Egg 约定好的。
+    await ctx.render('index.html', {
+      title: '我是尼克陈', // 将 title 传入 index.html
+    });
   }
 
   // 获取用户信息
@@ -16,11 +21,14 @@ class HomeController extends Controller {
     // const { id } = ctx.params; // 通过 params 获取申明参数
     // ctx.body = id;
 
-    const { name, slogen } = await ctx.service.home.user();
-    ctx.body = {
-      name,
-      slogen,
-    };
+    // const { name, slogen } = await ctx.service.home.user();
+    // ctx.body = {
+    //   name,
+    //   slogen,
+    // };
+
+    const result = await ctx.service.home.user();
+    ctx.body = result;
   }
 
   // post 请求方法
