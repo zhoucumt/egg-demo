@@ -60,6 +60,26 @@ class HomeController extends Controller {
       };
     }
   }
+
+  // 编辑
+  async editUser() {
+    const { ctx } = this;
+    const { id, name } = ctx.request.body;
+    try {
+      const result = await ctx.service.home.editUser(id, name);
+      ctx.body = {
+        code: 200,
+        msg: '添加成功',
+        data: null,
+      };
+    } catch (error) {
+      ctx.body = {
+        code: 500,
+        msg: '添加失败',
+        data: null,
+      };
+    }
+  }
 }
 
 module.exports = HomeController;
