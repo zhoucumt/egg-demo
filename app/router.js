@@ -11,4 +11,6 @@ module.exports = app => {
   router.get('/user', controller.home.user);
   router.post('/add_user', controller.home.addUser);
   router.post('/edit_user', controller.home.editUser);
+
+  router.post('/api/user/register', controller.user.register);
 };
